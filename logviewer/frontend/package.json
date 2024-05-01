@@ -1,8 +1,8 @@
 {
-  "name": "hawtio-sample-plugin",
+  "name": "spring-boot-log-viewer",
   "version": "1.0.0",
-  "description": "Hawtio sample plugin",
-  "main": "./src/main/webapp/app/sample-plugin.js",
+  "description": "Spring Boot Log Viewer",
+  "main": "./src/main/webapp/app/springbootlogviewer.js",
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
