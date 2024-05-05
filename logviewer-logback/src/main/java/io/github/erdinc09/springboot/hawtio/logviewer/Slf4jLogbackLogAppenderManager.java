@@ -61,7 +61,7 @@ final class Slf4jLogbackLogAppenderManager
   }
 
   @Override
-  public void setLogSink(ILogSinkConsumer logSinkConsumer) {
+  public void setLogSink(@Nonnull ILogSinkConsumer logSinkConsumer) {
     logSinkConsumer.setLogSink(logSink);
   }
 }

@@ -1,19 +1,15 @@
 package io.github.erdinc09.springboot.hawtio.logviewer;
 
-import ch.qos.logback.classic.Level;
-import ch.qos.logback.classic.Logger;
-import ch.qos.logback.classic.LoggerContext;
-import ch.qos.logback.classic.spi.LoggerContextListener;
 import com.google.common.base.Preconditions;
-import java.util.Optional;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.GuardedBy;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-final class Slf4jLogbackLogAppenderManager
+final class Slf4jLog4j2LogAppenderManager
     implements ILogAppenderManager, ILogSinkSetter {
 
   @Nonnull
@@ -23,7 +19,7 @@ final class Slf4jLogbackLogAppenderManager
   private boolean initialized = false;
 
   @Autowired
-  public Slf4jLogbackLogAppenderManager(ILogSink logSink) {
+  public Slf4jLog4j2LogAppenderManager(ILogSink logSink) {
     this.logSink = Preconditions.checkNotNull(logSink);
   }
 
@@ -35,7 +31,7 @@ final class Slf4jLogbackLogAppenderManager
   }
 
   @Override
-  public void setLogSink(ILogSinkConsumer logSinkConsumer) {
+  public void setLogSink(@Nonnull ILogSinkConsumer logSinkConsumer) {
     logSinkConsumer.setLogSink(logSink);
   }
 }
