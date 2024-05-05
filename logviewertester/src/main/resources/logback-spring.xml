@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration debug="true">
+<configuration debug="true"  scan="true" scanPeriod="3 seconds">
+
+    <appender name="SpringBootLogViewerAppender" class="io.github.erdinc09.springboot.hawtio.logviewer.SpringBootLogViewerLogbackAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
     <root level="INFO">
-        <appender-ref ref="CONSOLE" />
+       <!-- <appender-ref ref="CONSOLE" />-->
+        <appender-ref ref="SpringBootLogViewerAppender" />
     </root>
     <logger name="org.springframework.web" level="DEBUG"/>
     <logger name="io.github.erdinc09.springboot.hawtio.logviewertester" level="DEBUG"/>
