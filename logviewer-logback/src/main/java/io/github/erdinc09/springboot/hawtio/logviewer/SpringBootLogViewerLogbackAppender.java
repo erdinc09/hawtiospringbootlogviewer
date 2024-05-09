@@ -20,7 +20,7 @@ public final class SpringBootLogViewerLogbackAppender extends OutputStreamAppend
 
   @GuardedBy("SpringBootLogViewerLogbackAppender.class")
   @Nonnull
-  private static Optional<ILogSinkSetter> appenderCallBackSetter = Optional.empty();
+  private static Optional<ILogSinkSetter> logSinkSetter = Optional.empty();
 
   // no need for synchronization, already locked by OutputStreamAppender.streamWriteLock
   private final StringBuilder sb = new StringBuilder();
@@ -36,13 +36,13 @@ public final class SpringBootLogViewerLogbackAppender extends OutputStreamAppend
     System.out.println("SpringBootLogViewerLogbackAppender created");
   }
 
-  static void setAppenderCallBackSetter(Optional<ILogSinkSetter> appenderCallBackSetter) {
-    Preconditions.checkNotNull(appenderCallBackSetter);
-    Preconditions.checkArgument(appenderCallBackSetter.isPresent());
-    SpringBootLogViewerLogbackAppender.appenderCallBackSetter = appenderCallBackSetter;
+  static void setLogSinkSetter(ILogSinkSetter logSinkSetter) {
+    synchronized (SpringBootLogViewerLogbackAppender.class) {
+      SpringBootLogViewerLogbackAppender.logSinkSetter = Optional.of(logSinkSetter);
+    }
   }
 
-  static void setCallBacks(@Nonnull ILogSink logSink) {
+  static void setLogSinks(@Nonnull ILogSink logSink) {
     Preconditions.checkNotNull(logSink);
     synchronized (SpringBootLogViewerLogbackAppender.class) {
       for (SpringBootLogViewerLogbackAppender appender : STARTED_INSTANCES) {
@@ -65,7 +65,7 @@ public final class SpringBootLogViewerLogbackAppender extends OutputStreamAppend
       // SpringBootLogViewerLogbackAppender may be created
       // otherwise it is fresh start, the only way is saving the created instances in order to set
       // the callbacks
-      appenderCallBackSetter.ifPresentOrElse(
+      logSinkSetter.ifPresentOrElse(
           appenderCallBackSetter -> appenderCallBackSetter.setLogSink(this),
           () -> STARTED_INSTANCES.add(this));
     }
@@ -77,7 +77,6 @@ public final class SpringBootLogViewerLogbackAppender extends OutputStreamAppend
     super.stop();
     synchronized (SpringBootLogViewerLogbackAppender.class) {
       STARTED_INSTANCES.remove(this);
-      appenderCallBackSetter = Optional.empty();
     }
     System.out.println("SpringBootLogViewerLogbackAppender stopped");
   }

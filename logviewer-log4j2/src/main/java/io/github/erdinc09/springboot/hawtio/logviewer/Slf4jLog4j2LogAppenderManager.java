@@ -5,8 +5,11 @@ import com.google.common.base.Preconditions;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.GuardedBy;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 @Component
 final class Slf4jLog4j2LogAppenderManager
@@ -26,7 +29,8 @@ final class Slf4jLog4j2LogAppenderManager
   @Override
   public synchronized void initialize() {
     Preconditions.checkState(!initialized, "already initialized");
-
+    SpringBootLogViewerLog4j2Appender.setLogSinkStatic(logSink);
+    SpringBootLogViewerLog4j2Appender.setLogSinkSetter(this);
     initialized = true;
   }
 

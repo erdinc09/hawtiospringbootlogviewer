@@ -21,7 +21,6 @@
 		<plugin.path>frontend</plugin.path>
 		<node-version>v20.12.2</node-version>
 		<yarn-version>v1.22.22</yarn-version>
-		<log4j2-version>2.21.1</log4j2-version>
 		<frontend-maven-plugin-version>1.15.0</frontend-maven-plugin-version>
 
 	</properties>
@@ -34,19 +33,19 @@
 		<dependency>
 			<groupId>io.hawt</groupId>
 			<artifactId>hawtio-springboot</artifactId>
+
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>33.1.0-jre</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${log4j2-version}</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
