@@ -2,6 +2,7 @@
   <configuration default="false" name="LogViewerTesterApplication-Logback" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="io.github.erdinc09.springboot.hawtio.logviewertester.LogViewerTesterApplication" />
     <module name="logviewertester-logback" />
+    <option name="VM_PARAMETERS" value="-Dio.github.erdinc09.springboot.hawtio.internal_log.enabled=true" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="io.github.erdinc09.springboot.hawtio.logviewertester.*" />

@@ -7,6 +7,7 @@ import javax.annotation.concurrent.GuardedBy;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -22,7 +23,7 @@ final class Slf4jLog4j2LogAppenderManager
   private boolean initialized = false;
 
   @Autowired
-  public Slf4jLog4j2LogAppenderManager(ILogSink logSink) {
+  public Slf4jLog4j2LogAppenderManager(@Qualifier("logController") ILogSink logSink) {
     this.logSink = Preconditions.checkNotNull(logSink);
   }
 

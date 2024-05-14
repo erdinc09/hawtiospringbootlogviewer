@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.GuardedBy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,7 +18,7 @@ final class Slf4jLogbackLogAppenderManager
   private boolean initialized = false;
 
   @Autowired
-  public Slf4jLogbackLogAppenderManager(ILogSink logSink) {
+  public Slf4jLogbackLogAppenderManager(@Qualifier("logController") ILogSink logSink) {
     this.logSink = Preconditions.checkNotNull(logSink);
   }
 
