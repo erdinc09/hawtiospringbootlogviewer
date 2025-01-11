@@ -16,6 +16,7 @@
     "@patternfly/react-charts": "~6.94.21",
     "@patternfly/react-core": "~4.278.1",
     "@patternfly/react-table": "~4.113.7",
+    "@stomp/stompjs": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

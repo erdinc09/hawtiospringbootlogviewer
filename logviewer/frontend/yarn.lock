@@ -1203,6 +1203,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@stomp/stompjs@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "@stomp/stompjs@npm:7.0.0"
+  checksum: 10/f60db460e0cb3a48ddb0aa6ee7cd3fd3de6cffadccce153a791580ee7c0c89a1bc5e90d612cab621d539c237bece361f3f019e48f2de847789074373eaca037d
+  languageName: node
+  linkType: hard
+
 "@swc/core-darwin-arm64@npm:1.4.17":
   version: 1.4.17
   resolution: "@swc/core-darwin-arm64@npm:1.4.17"
@@ -7786,6 +7793,7 @@ __metadata:
     "@patternfly/react-charts": "npm:~6.94.21"
     "@patternfly/react-core": "npm:~4.278.1"
     "@patternfly/react-table": "npm:~4.113.7"
+    "@stomp/stompjs": "npm:^7.0.0"
     "@swc/core": "npm:^1.4.11"
     copy-webpack-plugin: "npm:^12.0.2"
     css-loader: "npm:^6.10.0"

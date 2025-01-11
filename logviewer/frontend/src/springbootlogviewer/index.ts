@@ -1,6 +1,5 @@
 import { HawtioPlugin, configManager } from '@hawtio/react'
-import { customTree } from './custom-tree'
-import { simple } from './simple'
+import { sprinBootLogViewer } from './plugin'
 
 /**
  * The entry function for the plugin exposed to Hawtio.
@@ -17,10 +16,9 @@ import { simple } from './simple'
  * @see src/main/java/io/hawt/example/spring/boot/SampleSpringBootService.java
  */
 export const plugin: HawtioPlugin = () => {
-  simple()
-  customTree()
+  sprinBootLogViewer()
 }
 
 // Register the custom plugin version to Hawtio
 // See package.json "replace-version" script for how to replace the version placeholder with a real version
-configManager.addProductInfo('Hawtio Sample Plugin', '__PACKAGE_VERSION_PLACEHOLDER__')
+configManager.addProductInfo('Spring Boot Log Viewer', '__PACKAGE_VERSION_PLACEHOLDER__')

@@ -18,6 +18,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
   @Override
   public void registerStompEndpoints(StompEndpointRegistry registry) {
-    registry.addEndpoint("/hawtio-spring-boot-log-viewer");
+    registry.addEndpoint("/hawtio-spring-boot-log-viewer").setAllowedOriginPatterns("*");
   }
 }
