@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.5</version>
+		<version>3.4.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.github.erdinc09.springboot.hawtio</groupId>
@@ -16,7 +16,7 @@
 	<description>Spring Boot Log Viewer Log4j2</description>
 	<properties>
 		<java.version>17</java.version>
-		<hawtio-version>4.0.0</hawtio-version>
+		<hawtio-version>4.2.0</hawtio-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
