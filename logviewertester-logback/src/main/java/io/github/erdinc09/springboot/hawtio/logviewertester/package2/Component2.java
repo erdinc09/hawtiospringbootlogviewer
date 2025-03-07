@@ -11,5 +11,7 @@ public final class Component2 {
   @Scheduled(fixedRate = 3_000)
   private void log() {
     logger.debug("test debug log");
+
+    throw new RuntimeException("Test Exception for stacktrace");
   }
 }
