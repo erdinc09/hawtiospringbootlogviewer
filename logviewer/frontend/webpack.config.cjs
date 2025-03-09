@@ -12,6 +12,11 @@ const outputPath = path.resolve(__dirname, "build");
 module.exports = (_, args) => {
   const isProduction = args.mode === "production";
   return {
+    // performance: {
+    //   hints: false,
+    //   maxEntrypointSize: 512000,
+    //   maxAssetSize: 512000
+    // },
     entry: "./src/index",
     plugins: [
       new ModuleFederationPlugin({
@@ -235,6 +240,7 @@ module.exports = (_, args) => {
             logLevel: "debug",
           }),
         });
+
 
         return middlewares;
       },

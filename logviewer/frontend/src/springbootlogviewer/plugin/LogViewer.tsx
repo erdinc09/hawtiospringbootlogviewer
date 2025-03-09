@@ -49,6 +49,7 @@ export const LogViewer: React.FunctionComponent = () => {
         } else {
             setLinesBehind(0);
         }
+
     }, [isPaused, buffer]);
 
     useEffect(() => {
@@ -59,7 +60,7 @@ export const LogViewer: React.FunctionComponent = () => {
                 if (msg.body) {
                     const jsonBody = JSON.parse(msg.body);
                     if (jsonBody.message) {
-                        setBuffer((prevLogs) => [...prevLogs, jsonBody.message]);
+                        setBuffer((prevLogs) => [...prevLogs, ...(jsonBody.message.split('\n'))]);
                         log.log("message received ", jsonBody.message);
                     }
                 }
@@ -148,7 +149,7 @@ export const LogViewer: React.FunctionComponent = () => {
                           scrollDirection,
                           scrollOffset,
                           scrollOffsetToBottom,
-                          //scrollUpdateWasRequested is false when the scroll event is cause by the user interaction in the browser, else it's true.
+                          //scrollUpdateWasRequested is false when the scroll event is caused by the user interaction in the browser, else it's true.
                           scrollUpdateWasRequested,
                       }: {
         scrollDirection: "forward" | "backward";

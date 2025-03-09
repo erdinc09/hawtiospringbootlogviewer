@@ -7,6 +7,7 @@
   "private": true,
   "scripts": {
     "start": "webpack serve --mode development",
+    "prod-preview": "webpack serve --mode production",
     "build": "webpack --mode production",
     "test": "jest --passWithNoTests",
     "replace-version": "replace __PACKAGE_VERSION_PLACEHOLDER__ $npm_package_version ./build/static/js -r --include=\"*.js\""
